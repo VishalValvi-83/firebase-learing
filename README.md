@@ -1,8 +1,4 @@
-# React + Vite
+ Application performs CRUD (Create, Read, Update, Delete) operations using the Firestore database. It also handles authentication and authorization using Firebase Authentication.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Update the firebaseConfig object file with your project's credentials.
