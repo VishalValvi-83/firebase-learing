@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 import context from "./context";
-import { addDoc, collection, deleteDoc, doc, onSnapshot, orderBy, query, QuerySnapshot, setDoc, Timestamp } from "firebase/firestore";
+import { addDoc, collection, deleteDoc, doc, onSnapshot, orderBy, query, setDoc, Timestamp } from "firebase/firestore";
 import toast from "react-hot-toast";
 import { db } from "../../firebase/firebaseconfig";
 
-const myContextProvider = (props) => {
+const ContextProvider = (props) => {
     const [product, setProduct] = useState({
         title: "",
         price: "",
@@ -95,17 +95,24 @@ const myContextProvider = (props) => {
 
     //delete product 
     const delProduct = async (item) => {
-        try {
-            await deleteDoc(doc(db, 'products', item.id))
-            getProducts();
-            toast.loading("Deleting..")
-            setTimeout(() => {
-                toast.dismiss()
+        if (confirm("Really want to delete?")) {
+            try {
+                await deleteDoc(doc(db, 'products', item.id))
+                getProducts();
+                // toast.loading("Deleting..")
                 toast.success("Deleted")
-                window.location.href = "/"
-            }, 1000);
-        } catch (error) {
+                // setTimeout(() => {
+                //     // toast.dismiss()
 
+                //     // window.location.href = "/"
+                // }, 1000);
+            } catch (error) {
+                console.log(error)
+                alert(error.message)
+            }
+        }
+        else {
+            toast.error("cancelled")
         }
     }
 
@@ -126,4 +133,4 @@ const myContextProvider = (props) => {
 
 }
 
-export default myContextProvider;
+export default ContextProvider;
